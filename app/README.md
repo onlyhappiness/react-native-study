@@ -75,7 +75,9 @@ components/Profile.js
 import React from 'react';
 import {View, Text} from 'react-native';
 
-const Profile = () => {
+const Profile = props => {
+  // TODO: console로 props를 확인
+  console.warn('props', props);
   return (
     <View>
       <Text style={{fontSize: 50}}>Profile Components</Text>
@@ -99,7 +101,7 @@ const App = () => {
   return (
     <View>
       <Text style={{fontSize: 100}}>Hello React-Native</Text>
-      <Profile />
+      <Profile data={'bread'} />
     </View>
   );
 };
