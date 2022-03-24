@@ -1,12 +1,13 @@
 import React from 'react';
 import {View, Text} from 'react-native';
-import Profile from './components/Profile';
+import externalStyle from './style/externalStyle';
 
 const App = () => {
   return (
     <View>
-      <Text style={{fontSize: 100}}>Props</Text>
-      <Profile data={'bread'} />
+      <Text style={[externalStyle.textStyle, externalStyle.textBg]}>
+        Style in React Native
+      </Text>
     </View>
   );
 };

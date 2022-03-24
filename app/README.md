@@ -45,6 +45,8 @@
 
 ---
 
+App.js
+
 ```js
 import React from 'react';
 import {View, Text} from 'react-native';
@@ -118,6 +120,8 @@ export default App;
 
 ---
 
+App.js
+
 ```js
 import React, {useState} from 'react';
 import {View, Text, Button} from 'react-native';
@@ -137,3 +141,129 @@ export default App;
 ```
 
 > 버튼 클릭 시 반응하는 함수는 onPress()로 사용
+
+<br>
+<br>
+
+### StyleSheet (내장)
+
+> react-native는 css를 사용하지 않는다.
+> <br> 그러면 어떻게 써요?! (っ °Д °;)っ
+> <br> > <br> 요렇게!
+
+App.js
+
+```js
+import React from 'react';
+import {View, Text, StyleSheet} from 'react-native';
+
+const App = () => {
+  return (
+    <View>
+      <Text style={styles.headText}>Style in React Native</Text>
+    </View>
+  );
+};
+
+// TODO: StyleSheet
+const styles = StyleSheet.create({
+  headText: {
+    fontSize: 40,
+  },
+});
+
+export default App;
+```
+
+<br>
+
+> rn는 css 대신 StyleSheet 라는 것을 사용한다.
+
+<br>
+<br>
+
+> StyleSheet로 지정한 다수의 스타일을 사용하고 싶다면
+> <br> style을 배열로 넣으면 된다.
+
+App.js
+
+```js
+import React from 'react';
+import {View, Text, StyleSheet} from 'react-native';
+
+const App = () => {
+  return (
+    <View>
+      {/* TODO: 다수의 style을 사용 */}
+      <Text style={[styles.headText, styles.headColors]}>
+        Style in React Native
+      </Text>
+    </View>
+  );
+};
+
+const styles = StyleSheet.create({
+  headText: {
+    fontSize: 40,
+  },
+  headColors: {
+    color: 'orange',
+    backgroundColor: 'skyblue',
+  },
+});
+
+export default App;
+```
+
+<br>
+<br>
+
+### StyleSheet (외부)
+
+---
+
+<br>
+
+> 아마 이 방식이 더 사용하기 편하고 유용할 듯 하다.
+
+<br>
+
+style/externalStyle.js
+
+```js
+import {StyleSheet} from 'react-native';
+
+const externalStyle = StyleSheet.create({
+  textStyle: {
+    color: 'green',
+    fontSize: 60,
+  },
+  textBg: {
+    backgroundColor: 'red',
+  },
+});
+
+export default externalStyle;
+```
+
+<br>
+
+App.js
+
+```js
+import React from 'react';
+import {View, Text} from 'react-native';
+import externalStyle from './style/externalStyle';
+
+const App = () => {
+  return (
+    <View>
+      <Text style={[externalStyle.textStyle, externalStyle.textBg]}>
+        Style in React Native
+      </Text>
+    </View>
+  );
+};
+
+export default App;
+```
