@@ -267,3 +267,10 @@ const App = () => {
 
 export default App;
 ```
+
+<br>
+<br>
+
+### Icon
+
+> https://github.com/oblador/react-native-vector-icons
