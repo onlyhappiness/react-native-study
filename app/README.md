@@ -273,4 +273,144 @@ export default App;
 
 ### Icon
 
+react-native-vector-icons는 react-native에서 가장 대표적으로 사용하고 있는 icon이라고 한다.
+
 > https://github.com/oblador/react-native-vector-icons
+
+<br>
+<br>
+
+### FlatList
+
+---
+
+```js
+import React, {useState} from 'react';
+import {View, Text, FlatList} from 'react-native';
+// import externalStyle from './style/externalStyle';
+
+const App = () => {
+  const [data, setData] = useState([
+    {name: 'bread', email: 'happybread96@gmail.com'},
+    {name: 'bread', email: 'happybread96@gmail.com'},
+    {name: 'bread', email: 'happybread96@gmail.com'},
+    {name: 'bread', email: 'happybread96@gmail.com'},
+  ]);
+
+  return (
+    <View>
+      // 배열로 있는 data를 map 함수와 비슷함 // data를 하나씩 보여준다.
+      <FlatList
+        data={data}
+        renderItem={({item}) => {
+          return (
+            <Text
+              style={{fontSize: 30, backgroundColor: 'skyblue', margin: 15}}>
+              {item.name}, {item.email}
+            </Text>
+          );
+        }}
+      />
+    </View>
+  );
+};
+
+export default App;
+```
+
+> TODO: FlatList와 ScroolView 태그의 차이점은 조금 더 공부해서 서술하도록 하자
+
+<br>
+<br>
+
+### Handle Input
+
+---
+
+```js
+import React from 'react';
+import {View, TextInput} from 'react-native';
+
+function App() {
+  const Test = () => {
+    console.warn('fun called');
+  };
+
+  return (
+    <View>
+      <TextInput
+        style={{
+          color: 'green',
+          fontSize: 30,
+          borderWidth: 2,
+          borderColor: 'skyblue',
+          margin: 10,
+        }}
+        maxLength={4}
+        // 비밀번호 처리
+        secureTextEntry={true}
+        placeholder="Enter Your name"
+        onChangeText={Test}
+      />
+    </View>
+  );
+}
+
+export default App;
+```
+
+<br>
+<br>
+
+### Form
+
+---
+
+```js
+import React, {useState} from 'react';
+import {View, Text, Button, TextInput} from 'react-native';
+
+function App() {
+  const [state, setState] = useState({name: '', email: '', password: ''});
+
+  function submit() {
+    console.warn(state);
+  }
+
+  return (
+    <View style={{margin: 20, marginTop: 100}}>
+      <TextInput
+        placeholder="enter Name"
+        onChangeText={text => {
+          setState({...state, name: text});
+        }}
+        style={{borderWidth: 2, borderColor: 'skyblue', margin: 20}}
+      />
+      <TextInput
+        placeholder="enter email"
+        onChangeText={text => {
+          setState({...state, email: text});
+        }}
+        style={{borderWidth: 2, borderColor: 'skyblue', margin: 20}}
+      />
+      <TextInput
+        placeholder="enter password"
+        secureTextEntry={true}
+        onChangeText={text => {
+          setState({...state, password: text});
+        }}
+        style={{borderWidth: 2, borderColor: 'skyblue', margin: 20}}
+      />
+
+      <Button
+        title="submit"
+        onPress={() => {
+          submit();
+        }}
+      />
+    </View>
+  );
+}
+
+export default App;
+```
